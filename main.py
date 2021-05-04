@@ -3,7 +3,7 @@ import os
 import requests
 import json
 
-bot_token = os.environ['bot_token']
+bot_token = 'ODM5MDI2OTg3MDU3MTUyMDEw.YJDqxg.Ovh67D_pt74o3MR1nDC7waM_7-U'
 
 client = discord.Client()
 sign = 'r/'
