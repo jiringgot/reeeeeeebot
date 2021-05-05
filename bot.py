@@ -5,9 +5,12 @@ import json
 from dotenv import load_dotenv   #for python-dotenv method
 load_dotenv()
 
-print(os.getenv("DISCORD_TOKEN"))
+#print(os.getenv("DISCORD_TOKEN"))
 
 bot_token = os.getenv("DISCORD_TOKEN")
+
+size = len(bot_token)
+bot_token = bot_token[:size - 2]
 
 client = discord.Client()
 sign = 'r/'
