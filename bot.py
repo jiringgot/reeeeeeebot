@@ -8,6 +8,8 @@ except error as e:
     print(e)
 import json
 
+print(os.getenv("DISCORD_TOKEN")
+
 bot_token = os.getenv("DISCORD_TOKEN")
 
 client = discord.Client()
