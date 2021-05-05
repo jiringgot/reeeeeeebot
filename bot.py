@@ -2,6 +2,8 @@ import discord
 import os
 import requests
 import json
+from dotenv import load_dotenv   #for python-dotenv method
+load_dotenv()
 
 print(os.getenv("DISCORD_TOKEN"))
 
