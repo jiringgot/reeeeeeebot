@@ -1,11 +1,6 @@
 import discord
 import os
-
-try:
-    os.system('pip install requests')
-    import requests
-except error as e:
-    print(e)
+import requests
 import json
 
 print(os.getenv("DISCORD_TOKEN"))
