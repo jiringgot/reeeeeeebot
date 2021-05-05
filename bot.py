@@ -1,6 +1,11 @@
 import discord
 import os
-import requests
+
+try:
+    os.system('pip install requests')
+    import requests
+except error as e:
+    print(e)
 import json
 
 bot_token = os.getenv("DISCORD_TOKEN")
@@ -9,6 +14,7 @@ client = discord.Client()
 sign = 'r/'
 
 changelog_message = False
+
 
 
 def get_quote():
