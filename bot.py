@@ -3,6 +3,7 @@ from discord.ext import commands,tasks
 import os
 from dotenv import load_dotenv
 import json
+import requests
 load_dotenv()
 
 #print(os.getenv("DISCORD_TOKEN"))
