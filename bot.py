@@ -36,23 +36,13 @@ def gimme_meme():
     return quote
 
 
-class Bot(commands.AutoShardedBot):
+@bot.event
+async def on_ready():
+    print('Bot is ready.')
 
-    def __init__(self):
-        super().__init__(command_prefix="r/")
-        self.add_command(commands.Command(self.hello, name="hello"))
-        self.add_command(commands.Command(self.inspire_me, name="inspire-me"))
+@client.command()
+async def ping():
+    await bot.say('Pong!')
 
-    async def hello(self, ctx):
-        await ctx.send('Hello!')
-    async def inspire_me(self, ctx):
-        quote = get_quote()
-        await ctx.send(quote)
     
-    def run(self):
-        super().run(bot_token)
-
-
-if __name__ == "__main__":
-    bot = Bot()
-    bot.run()
+bot.run(bot_token)
