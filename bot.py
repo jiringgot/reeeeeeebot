@@ -53,6 +53,8 @@ async def on_message(message):
     if message.content.startswith(sign + 'meme'):
         meme = gimme_meme()
         await message.channel.send(meme)
+    if message.content.startswith(sign + 'e'):
+        await message.author.send('e')
     if message.content.startswith(sign + 'help'):
         embed=discord.Embed(title="REEEEEEEbot help", description="REEEEEEEbot is just an experiment made by REEEEEEEboi. Here are some commands: \n \n **r/hello** - Say hello to the bot \n \n **r/inspire-me** - make the bot send an inspirable quote \n \n **r/help** - You probably know what this one does :P \n \n **r/meme** - Give yourself a fresh meme from reddit. \n \n Well that's all for now, \n REEEEEEE", color=0xFF5733)
 
