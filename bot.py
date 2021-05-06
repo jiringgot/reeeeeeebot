@@ -41,7 +41,7 @@ async def on_ready():
     print('Bot is ready.')
 
 @bot.command()
-async def ping():
+async def ping(ctx):
     await bot.say('Pong!')
 
     
