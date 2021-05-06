@@ -39,11 +39,15 @@ def gimme_meme():
 class Bot(commands.AutoShardedBot):
 
     def __init__(self):
-        super().__init__(command_prefix="~")
-        self.add_command(commands.Command(self.test, name="test"))
+        super().__init__(command_prefix="r/")
+        self.add_command(commands.Command(self.hello, name="hello"))
+        self.add_command(commands.Command(self.inspire_me, name="inspire-me"))
 
-    async def test(self, ctx):
-        await ctx.send("some random text")
+    async def hello(self, ctx):
+        await ctx.send('Hello!')
+    async def inspire_me(self, ctx):
+        quote = get_quote()
+        await ctx.send(quote)
     
     def run(self):
         super().run(bot_token)
