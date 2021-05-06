@@ -40,9 +40,13 @@ def gimme_meme():
 async def on_ready():
     print('Bot is ready.')
 
-@bot.command(name="e")
+@bot.command(name="hello")
 async def ping(ctx):
-    await ctx.send('Pong!')
+    await ctx.send('Hello!')
+@bot.command(name="inspire-me")
+async def inspire_me(ctx):
+    quote = get_quote()
+    await ctx.send(quote)
 
     
 bot.run(bot_token)
