@@ -67,7 +67,6 @@ async def meme(ctx):
 
 
     
-bot.add_command(hello)
 bot.add_command(inspire_me)
 bot.add_command(meme)
 
