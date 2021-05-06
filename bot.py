@@ -61,7 +61,7 @@ async def help(ctx):
     embed.add_field(name="r/inspire-me", value="Make the bot say an inspirable quote", inline=False)
     embed.add_field(name="r/meme", value="Make the bot send a meme fresh from reddit", inline=False)
     author = ctx.message.author
-    await ctx.send_message(author, embed=embed)
+    await bot.send_message(author, embed=embed)
     
 
     
