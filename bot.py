@@ -1,8 +1,9 @@
 import discord
+from discord.ext import commands,tasks
 import os
-import requests
+from dotenv import load_dotenv
+import youtube_dl
 import json
-from dotenv import load_dotenv   #for python-dotenv method
 load_dotenv()
 
 #print(os.getenv("DISCORD_TOKEN"))
@@ -12,7 +13,9 @@ bot_token = os.getenv("DISCORD_TOKEN")
 size = len(bot_token)
 bot_token = bot_token[:size - 2]
 
-client = discord.Client()
+intents = discord.Intents().all()
+client = discord.Client(intents=intents)
+bot = commands.Bot(command_prefix='r/',intents=intents)
 sign = 'r/'
 
 changelog_message = False
@@ -40,47 +43,19 @@ async def on_ready():
     print('We have logged in as {0.user}'.format(client))
 
 
-@client.event
-async def on_message(message):
-    global changelog_message
-    if message.author == client.user:
-        return
-    if message.content.startswith(sign + 'hello'):
-        print('Sent Message: Hello!')
-        await message.channel.send('Hello!')
-
-    if message.content.startswith(sign + 'inspire-me'):
-        quote = get_quote()
-        print('Sent message: ' + quote)
-        await message.channel.send(quote)
-
-    if message.content.startswith(sign + 'help'):
-        embed = discord.Embed(title="REEEEEEEbot Help",
-                              description="REEEEEEEbot is just an experiment made by REEEEEEEboi. Here are some commands: \n \n **r/hello** - Say hello to the bot \n \n **r/inspire-me** - make the bot send an inspirable quote \n \n **r/help** - You probably know what this one does :P \n \n **r/meme** - Give yourself a fresh meme from reddit. \n \n Well that's all for now, \n REEEEEEE",
-                              color=discord.Colour.blue())
-        await message.channel.send(embed=embed)
-
-    if message.content.startswith(sign + 'changelog'):
-        await message.channel.send('Send message below')
-        changelog_message = True
-        return
-
-    if message.content.startswith(sign + 'stop') and changelog_message:
-        await message.channel.send('Stopped')
-        changelog_message = False
-        return
-
-    if changelog_message == True:
-        embed = discord.Embed(title="Changelog", description=message.content, color=discord.Colour.red())
-        channel = client.get_channel(794289983186927626)
-        await channel.send(embed=embed)
-
-    if message.content.startswith(sign + 'meme'):
-        image = gimme_meme()
-        await message.channel.send(image)
-
-    if message.content.startswith(sign + 'kick'):
-        message.author.kick(reason=None)
+@bot.command(name='hello', help='Say hello to the bot')
+async def hello(ctx):
+    await ctx.send('Hello!')
+    return
+@bot.command(name='inspire-me', help='Send an inspirable quote')
+async def inspire_me(ctx):
+    quote = get_quote()
+    await ctx.send(quote)
+    return
+@bot.command(name='meme', help='Make the bot send a meme')
+async def meme(ctx):
+    quote = gimme_meme()
+    await ctx.send(quote)
 
 
 client.run(bot_token)
