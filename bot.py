@@ -44,6 +44,9 @@ class Bot(commands.AutoShardedBot):
 
     async def test(self, ctx):
         await ctx.send("some random text")
+    
+    def run(self):
+        super().run(bot_token)
 
 
 if __name__ == "__main__":
