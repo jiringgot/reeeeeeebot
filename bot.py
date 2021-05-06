@@ -18,6 +18,8 @@ client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='r/')
 sign = 'r/'
 
+bot.remove_command('help')
+
 changelog_message = False
 
 
@@ -51,6 +53,16 @@ async def inspire_me(ctx):
 async def send_meme(ctx):
     meme = gimme_meme()
     await ctx.send(meme)
+
+@bot.command(name='help')
+async def help(ctx):
+    embed=discord.Embed(title="Help", description="Here is help:", color=0x00ff00)
+    embed.add_field(name="r/hello", value="Say hello to the bot", inline=False)
+    embed.add_field(name="r/inspire-me", value="Make the bot say an inspirable quote", inline=False)
+    embed.add_field(name="r/meme", value="Make the bot send a meme fresh from reddit", inline=False)
+    author = ctx.message.author
+    bot.send_message(author, embed=embed)
+    
 
     
 bot.run(bot_token)
