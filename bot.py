@@ -58,8 +58,6 @@ async def on_ready():
 
         
 @bot.command()
-async def hello(ctx):
-    await ctx.send('Hello!')
 async def inspire_me(ctx):
     quote = get_quote()
     await ctx.send(quote)
