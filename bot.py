@@ -56,18 +56,18 @@ async def on_ready():
 #    if message.content.startswith(sign + 'help'):
  #       embed=discord.Embed(title="REEEEEEEbot help", description="REEEEEEEbot is just an experiment made by REEEEEEEboi. Here are some commands: \n \n **r/hello** - Say hello to the bot \n \n **r/inspire-me** - make the bot send an inspirable quote \n \n **r/help** - You probably know what this one does :P \n \n **r/meme** - Give yourself a fresh meme from reddit. \n \n Well that's all for now, \n REEEEEEE", color=0xFF5733)
 
-        
+@bot.command()
+async def hello(ctx):
+    await ctx.send('Hello!')
 @bot.command()
 async def inspire_me(ctx):
     quote = get_quote()
     await ctx.send(quote)
+@bot.command()
 async def meme(ctx):
     meme = gimme_meme()
     await ctx.send(meme)
 
 
-    
-bot.add_command(inspire_me)
-bot.add_command(meme)
 
 client.run(bot_token)
