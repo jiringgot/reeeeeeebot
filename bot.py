@@ -40,13 +40,10 @@ class Bot(commands.AutoShardedBot):
 
     def __init__(self):
         super().__init__(command_prefix="~")
+        self.add_command(commands.Command("test", self.test))
 
-    @commands.command()
     async def test(self, ctx):
         await ctx.send("some random text")
-
-    def run(self):
-        super().run(bot_token)
 
 
 if __name__ == "__main__":
