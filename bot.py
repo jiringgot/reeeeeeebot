@@ -47,6 +47,10 @@ async def ping(ctx):
 async def inspire_me(ctx):
     quote = get_quote()
     await ctx.send(quote)
+@bot.command(name="meme")
+async def send_meme(ctx):
+    meme = gimme_meme()
+    await ctx.send(meme)
 
     
 bot.run(bot_token)
