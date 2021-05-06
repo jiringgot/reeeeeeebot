@@ -15,7 +15,7 @@ bot_token = bot_token[:size - 2]
 
 intents = discord.Intents().all()
 client = discord.Client(intents=intents)
-bot = commands.Bot(command_prefix='r/',intents=intents)
+bot = commands.Bot(command_prefix='r/')
 sign = 'r/'
 
 changelog_message = False
@@ -43,20 +43,34 @@ async def on_ready():
     print('We have logged in as {0.user}'.format(client))
 
 
-@client.event
-async def on_message(message):
-    if message.content.startswith(sign + 'hello'):
-        await message.channel.send('Hello!')
-    if message.content.startswith(sign + 'inspire-me'):
-        quote = get_quote()
-        await message.channel.send(quote)
-    if message.content.startswith(sign + 'meme'):
-        meme = gimme_meme()
-        await message.channel.send(meme)
-    if message.content.startswith(sign + 'e'):
-        await message.author.send('e')
-    if message.content.startswith(sign + 'help'):
-        embed=discord.Embed(title="REEEEEEEbot help", description="REEEEEEEbot is just an experiment made by REEEEEEEboi. Here are some commands: \n \n **r/hello** - Say hello to the bot \n \n **r/inspire-me** - make the bot send an inspirable quote \n \n **r/help** - You probably know what this one does :P \n \n **r/meme** - Give yourself a fresh meme from reddit. \n \n Well that's all for now, \n REEEEEEE", color=0xFF5733)
+#@client.event
+#async def on_message(message):
+#    if message.content.startswith(sign + 'hello'):
+#        await message.channel.send('Hello!')
+#    if message.content.startswith(sign + 'inspire-me'):
+#        quote = get_quote()
+#        await message.channel.send(quote)
+#    if message.content.startswith(sign + 'meme'):
+#        meme = gimme_meme()
+#        await message.channel.send(meme)
+#    if message.content.startswith(sign + 'help'):
+ #       embed=discord.Embed(title="REEEEEEEbot help", description="REEEEEEEbot is just an experiment made by REEEEEEEboi. Here are some commands: \n \n **r/hello** - Say hello to the bot \n \n **r/inspire-me** - make the bot send an inspirable quote \n \n **r/help** - You probably know what this one does :P \n \n **r/meme** - Give yourself a fresh meme from reddit. \n \n Well that's all for now, \n REEEEEEE", color=0xFF5733)
 
+        
+@bot.command()
+async def hello(ctx):
+    await ctx.send('Hello!')
+async def inspire_me(ctx):
+    quote = get_quote()
+    await ctx.send(quote)
+async def meme(ctx):
+    meme = gimme_meme()
+    await ctx.send(meme)
+
+
+    
+bot.add_command(hello)
+bot.add_command(inspire_me)
+bot.add_command(meme)
 
 client.run(bot_token)
