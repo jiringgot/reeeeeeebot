@@ -61,6 +61,8 @@ async def help(ctx):
     embed.add_field(name="r/inspire-me", value="Make the bot say an inspirable quote", inline=False)
     embed.add_field(name="r/meme", value="Make the bot send a meme fresh from reddit", inline=False)
     author = ctx.message.author
+    msg = await bot.get_channel(payload.channel_id).fetch_message(payload.message_id)
+    author = msg.author
     await bot.send_message(author, embed=embed)
     
 
