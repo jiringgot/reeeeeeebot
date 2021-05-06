@@ -40,7 +40,7 @@ def gimme_meme():
 async def on_ready():
     print('Bot is ready.')
 
-@client.command()
+@bot.command()
 async def ping():
     await bot.say('Pong!')
 
