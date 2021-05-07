@@ -41,7 +41,7 @@ def gimme_meme():
 @bot.event
 async def on_ready():
     print('Bot is ready.')
-    await bot.change_presence(activity=discord.Streaming(name="My Stream", url='https://twitch.tv/tiredcheeseboi'))
+    await bot.change_presence(activity=discord.Streaming(name="Tiredcheeseboi | r/help", url='https://twitch.tv/tiredcheeseboi'))
 
 @bot.command(name="hello")
 async def ping(ctx):
