@@ -59,11 +59,11 @@ async def on_message(message):
     if message.content.startswith(sign + 'help'):
         embed=discord.Embed(title="Help", description="Here is help:", color=0x00ff00)
         embed.add_field(name="r/hello", value="Say hello to the bot", inline=False)
-        embed.add_field(name="_______________", value="")
+        embed.add_field(name="_______________", value=" ")
         embed.add_field(name="r/inspire-me", value="Make the bot say an inspirable quote", inline=False)
-        embed.add_field(name="_______________")
+        embed.add_field(name="_______________", value=" ")
         embed.add_field(name="r/meme", value="Make the bot send a meme fresh from reddit", inline=False)
-        embed.add_field(name="_______________", value="")
+        embed.add_field(name="_______________", value=" ")
         embed.set_footer(text="Made by REEEEEEEboi")
         await message.author.send(embed=embed, value="")
 
