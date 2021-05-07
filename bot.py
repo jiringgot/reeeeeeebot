@@ -61,6 +61,6 @@ async def on_message(message):
         embed.add_field(name="r/hello", value="Say hello to the bot", inline=False)
         embed.add_field(name="r/inspire-me", value="Make the bot say an inspirable quote", inline=False)
         embed.add_field(name="r/meme", value="Make the bot send a meme fresh from reddit", inline=False)
-        await message.author.send(embed)
+        await message.author.send(embed=embed)
 
 bot.run(bot_token)
