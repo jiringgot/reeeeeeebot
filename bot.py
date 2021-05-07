@@ -56,7 +56,7 @@ async def send_meme(ctx):
 
 @bot.event
 async def on_message(message):
-    if message.startswith(sign + 'help'):
+    if message.content.startswith(sign + 'help'):
         embed=discord.Embed(title="Help", description="Here is help:", color=0x00ff00)
         embed.add_field(name="r/hello", value="Say hello to the bot", inline=False)
         embed.add_field(name="r/inspire-me", value="Make the bot say an inspirable quote", inline=False)
