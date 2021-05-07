@@ -54,17 +54,7 @@ async def send_meme(ctx):
     meme = gimme_meme()
     await ctx.send(meme)
 
-@bot.command(name='help')
-async def help(ctx):
-    embed=discord.Embed(title="Help", description="Here is help:", color=0x00ff00)
-    embed.add_field(name="r/hello", value="Say hello to the bot", inline=False)
-    embed.add_field(name="r/inspire-me", value="Make the bot say an inspirable quote", inline=False)
-    embed.add_field(name="r/meme", value="Make the bot send a meme fresh from reddit", inline=False)
-    author = ctx.message.author
-    msg = await bot.get_channel(payload.channel_id).fetch_message(payload.message_id)
-    author = msg.author
-    await bot.send_message(author, embed=embed)
-    
+@bot.event
 async def on_message(message):
     if message.startswith(sign + 'help'):
         embed=discord.Embed(title="Help", description="Here is help:", color=0x00ff00)
