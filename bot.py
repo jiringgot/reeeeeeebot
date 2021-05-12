@@ -24,7 +24,25 @@ sign = 'r/'
 
 changelog_message = False
 
+ban_list = []
+day_list = []
+server_list = []
 
+#This is a background process
+async def countdown():
+    await bot.wait_until_ready()
+    while not bot.is_closed:
+        await asyncio.sleep(1)
+        day_list[:] = [x - 1 for x in day_list]
+        for day in day_list:
+            if day <= 0:
+                try:
+                    await bot.unban(server_list[day_list.index(day)], ban_list[day_list.index(day)])
+                except:
+                    print('Error! User already unbanned!')
+                del ban_list[day_list.index(day)]
+                del server_list[day_list.index(day)]
+                del day_list[day_list.index(day)]
 
 def get_quote():
     response = requests.get("https://zenquotes.io/api/random")
@@ -59,9 +77,15 @@ async def send_meme(ctx):
 
 @bot.command(name="ban", brief="Ban a member.", description="Ban a member. Can only be used by an adminstrator.")
 @commands.has_permissions(administrator = True)
-async def ban(ctx, member : discord.Member, *, reason = None):
-    await member.ban(reason = reason)
-    await ctx.send(f'Banned {member.mention}')
+async def ban(ctx, member : discord.Member, *, reason = None, days = 1):
+    try:
+            await bot.ban(member, delete_message_days=0)
+            await ctx.send('User banned for **' + str(days) + ' day(s)**')
+            ban_list.append(member)
+            day_list.append(days * 24 * 60 * 60)
+            server_list.append(ctx.message.server)
+        except:
+            await client.say('Error! User not active')
 
 #The below code unbans player.
 @bot.command(name="unban", brief="Unban a member.", description="Unban a member. Can only be used by an administrator.")
