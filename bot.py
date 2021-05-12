@@ -13,9 +13,13 @@ bot_token = os.getenv("DISCORD_TOKEN")
 size = len(bot_token)
 bot_token = bot_token[:size - 2]
 
+help_command = commands.DefaultHelpCommand(
+    no_category = 'Commands'
+)
+
 intents = discord.Intents().all()
 client = discord.Client(intents=intents)
-bot = commands.Bot(command_prefix='r/')
+bot = commands.Bot(command_prefix='r/',  help_command = help_command)
 sign = 'r/'
 
 changelog_message = False
@@ -41,7 +45,7 @@ async def on_ready():
     print('Bot is ready.')
     await bot.change_presence(activity=discord.Streaming(name="Tiredcheeseboi | r/help", url='https://twitch.tv/tiredcheeseboi'))
 
-@bot.command(name="hello", brief="Say hello to the bot." description="Make the bot say hello to you.")
+@bot.command(name="hello", brief="Say hello to the bot.", description="Make the bot say hello to you.")
 async def ping(ctx):
     await ctx.send('Hello!')
 @bot.command(name="inspire-me")
