@@ -79,13 +79,13 @@ async def send_meme(ctx):
 @commands.has_permissions(administrator = True)
 async def ban(ctx, member : discord.Member, *, reason = None, days = 1):
     try:
-            await bot.ban(member, delete_message_days=0)
-            await ctx.send('User banned for **' + str(days) + ' day(s)**')
-            ban_list.append(member)
-            day_list.append(days * 24 * 60 * 60)
-            server_list.append(ctx.message.server)
-        except:
-            await client.say('Error! User not active')
+        await bot.ban(member, delete_message_days=0)
+        await ctx.send('User banned for **' + str(days) + ' day(s)**')
+        ban_list.append(member)
+        day_list.append(days * 24 * 60 * 60)
+        server_list.append(ctx.message.server)
+    except:
+        await client.say('Error! User not active')
 
 #The below code unbans player.
 @bot.command(name="unban", brief="Unban a member.", description="Unban a member. Can only be used by an administrator.")
