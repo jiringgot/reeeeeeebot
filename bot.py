@@ -61,7 +61,7 @@ async def send_meme(ctx):
 @commands.has_permissions(administrator = True)
 async def ban(ctx, member : discord.Member, *, reason = None):
     await member.ban(reason = reason)
-    print(f'Banned {member}')
+    await ctx.send(f'Banned {user.mention}')
 
 #The below code unbans player.
 @bot.command()
