@@ -61,10 +61,10 @@ async def send_meme(ctx):
 @commands.has_permissions(administrator = True)
 async def ban(ctx, member : discord.Member, *, reason = None):
     await member.ban(reason = reason)
-    await ctx.send(f'Banned {user.mention}')
+    await ctx.send(f'Banned {member.mention}')
 
 #The below code unbans player.
-@bot.command()
+@bot.command(name="unban", brief="Unban a member.", description="Unban a member. Can only be used by an administrator.")
 @commands.has_permissions(administrator = True)
 async def unban(ctx, *, member):
     banned_users = await ctx.guild.bans()
@@ -77,5 +77,11 @@ async def unban(ctx, *, member):
             await ctx.guild.unban(user)
             await ctx.send(f'Unbanned {user.mention}')
             return
+
+@bot.command(name="kick", brief="Kicks a member.", description="Kicks a member. Can only be used by an administrator.")
+@commands.has_permission(administrator = True)
+async def kick(ctx, member : discord.Member, *, reason = None):
+    await member.kick(reason = reason)
+    await ctx.send(f'Kicked {member.mention}')
 
 bot.run(bot_token)
