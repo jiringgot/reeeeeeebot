@@ -85,7 +85,7 @@ async def ban(ctx, member : discord.Member, *, reason = None, days = 1):
         day_list.append(days * 24 * 60 * 60)
         server_list.append(ctx.message.server)
     except:
-        await client.say('Error! User not active')
+        await bot.send('Error! User not active')
 
 #The below code unbans player.
 @bot.command(name="unban", brief="Unban a member.", description="Unban a member. Can only be used by an administrator.")
