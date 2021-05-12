@@ -79,7 +79,7 @@ async def unban(ctx, *, member):
             return
 
 @bot.command(name="kick", brief="Kicks a member.", description="Kicks a member. Can only be used by an administrator.")
-@commands.has_permission(administrator = True)
+@commands.has_permissions(administrator = True)
 async def kick(ctx, member : discord.Member, *, reason = None):
     await member.kick(reason = reason)
     await ctx.send(f'Kicked {member.mention}')
