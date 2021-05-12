@@ -48,11 +48,11 @@ async def on_ready():
 @bot.command(name="hello", brief="Say hello to the bot.", description="Make the bot say hello to you.")
 async def ping(ctx):
     await ctx.send('Hello!')
-@bot.command(name="inspire-me")
+@bot.command(name="inspire-me", brief="Make the bot inspire you.", description="Makes the bot send an inspireable quote using the zenquotes.io api.")
 async def inspire_me(ctx):
     quote = get_quote()
     await ctx.send(quote)
-@bot.command(name="meme")
+@bot.command(name="meme", brief="Make the bot send a meme fresh from reddit.", description="Makes the bot send a meme from reddit using an API from http://meme-api.herokuapp.com/gimme")
 async def send_meme(ctx):
     meme = gimme_meme()
     await ctx.send(meme)
