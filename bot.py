@@ -41,7 +41,7 @@ async def on_ready():
     print('Bot is ready.')
     await bot.change_presence(activity=discord.Streaming(name="Tiredcheeseboi | r/help", url='https://twitch.tv/tiredcheeseboi'))
 
-@bot.command(name="hello", help_description="Say hello")
+@bot.command(name="hello", description="Say hello")
 async def ping(ctx):
     await ctx.send('Hello!')
 @bot.command(name="inspire-me")
