@@ -18,8 +18,6 @@ client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='r/')
 sign = 'r/'
 
-bot.remove_command('help')
-
 changelog_message = False
 
 
@@ -43,7 +41,7 @@ async def on_ready():
     print('Bot is ready.')
     await bot.change_presence(activity=discord.Streaming(name="Tiredcheeseboi | r/help", url='https://twitch.tv/tiredcheeseboi'))
 
-@bot.command(name="hello")
+@bot.command(name="hello", help_description="Say hello")
 async def ping(ctx):
     await ctx.send('Hello!')
 @bot.command(name="inspire-me")
@@ -54,15 +52,5 @@ async def inspire_me(ctx):
 async def send_meme(ctx):
     meme = gimme_meme()
     await ctx.send(meme)
-
-@bot.event
-async def on_message(message):
-    if message.content.startswith(sign + 'help'):
-        embed=discord.Embed(title="Help", description="Here is help:", color=0x00ff00)
-        embed.add_field(name="r/hello", value="Say hello to the bot", inline=False)
-        embed.add_field(name="r/inspire-me", value="Make the bot say an inspirable quote", inline=False)
-        embed.add_field(name="r/meme", value="Make the bot send a meme fresh from reddit", inline=False)
-        embed.set_footer(text="Made by REEEEEEEboi")
-        await message.author.send(embed=embed)
 
 bot.run(bot_token)
