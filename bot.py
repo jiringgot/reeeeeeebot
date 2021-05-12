@@ -66,7 +66,7 @@ async def ban(ctx, member : discord.Member, *, reason = None):
 #The below code unbans player.
 @bot.command()
 @commands.has_permissions(administrator = True)
-async def unban(ctx, *, member : discord.Member):
+async def unban(ctx, *, member):
     banned_users = await ctx.guild.bans()
     member_name, member_discriminator = member.split("#")
 
