@@ -57,8 +57,8 @@ async def send_meme(ctx):
     meme = gimme_meme()
     await ctx.send(meme)
 
-@bot.command()
-@commands.has_permissions(ban_members = True)
+@bot.command(name="ban", brief="Ban a member.", description="Ban a member. Can only be used by an adminstrator.")
+@commands.has_permissions(administrator = True)
 async def ban(ctx, member : discord.Member, *, reason = None):
     await member.ban(reason = reason)
     print(f'Banned {member}')
