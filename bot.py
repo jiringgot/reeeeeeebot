@@ -74,8 +74,8 @@ async def inspire_me(ctx):
 @bot.command(name="meme", brief="Make the bot send a meme fresh from reddit.", description="Makes the bot send a meme from reddit using an API from http://meme-api.herokuapp.com/gimme")
 async def send_meme(ctx):
     meme = gimme_meme()
-    arrow_up = get(ctx.message.server.emojis, name="arrow_up")
-    arrow_down = get(ctx.message.server.emojis, name="arrow_down")
+    arrow_up = get(ctx.guild.emojis, name="arrow_up")
+    arrow_down = get(ctx.guild.emojis, name="arrow_down")
     embedVar = discord.Embed(title=meme['title'], description=" ", url=meme['postLink'], color=0x00ff00)
     embedVar.set_author(name=meme['author'])
     embedVar.set_image(url=meme['url'])
