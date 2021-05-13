@@ -76,7 +76,7 @@ async def send_meme(ctx):
     embedVar = discord.Embed(title=meme['title'], description=meme['url'], color=0x00ff00)
     embedVar.set_author(name=meme['author'])
     embedVar.set_footer(text=meme['ups'])
-    await message.channel.send(embed=embedVar)
+    await ctx.send(embed=embedVar)
 
 @bot.command(name="ban", brief="Ban a member.", description="Ban a member. Can only be used by an adminstrator.")
 @commands.has_permissions(administrator = True)
