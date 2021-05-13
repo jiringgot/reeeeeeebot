@@ -54,7 +54,7 @@ def get_quote():
 def gimme_meme():
     response = requests.get("http://meme-api.herokuapp.com/gimme")
     json_data = json.loads(response.text)
-    quote = json_data['url']
+    quote = json_data
     return quote
 
 
@@ -73,19 +73,15 @@ async def inspire_me(ctx):
 @bot.command(name="meme", brief="Make the bot send a meme fresh from reddit.", description="Makes the bot send a meme from reddit using an API from http://meme-api.herokuapp.com/gimme")
 async def send_meme(ctx):
     meme = gimme_meme()
-    await ctx.send(meme)
+    embedVar = discord.Embed(title=meme['title'], description=meme['url'], color=0x00ff00)
+    embedVar.set_author(name=meme['author'])
+    embedVar.set_footer(text=meme['ups'])
+    await message.channel.send(embed=embedVar)
 
 @bot.command(name="ban", brief="Ban a member.", description="Ban a member. Can only be used by an adminstrator.")
 @commands.has_permissions(administrator = True)
-async def ban(ctx, member : discord.Member, *, reason = None, days = 1):
-    try:
-        await ctx.ban(member, delete_message_days=0)
-        await ctx.send('User banned for **' + str(days) + ' day(s)**')
-        ban_list.append(member)
-        day_list.append(days * 24 * 60 * 60)
-        server_list.append(ctx.message.server)
-    except:
-        await ctx.send('Error! User not active')
+async def ban(ctx, member : discord.Member, *, reason = None):
+    await member.ban(reason = reason)
 
 #The below code unbans player.
 @bot.command(name="unban", brief="Unban a member.", description="Unban a member. Can only be used by an administrator.")
