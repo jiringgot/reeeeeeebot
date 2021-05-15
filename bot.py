@@ -59,12 +59,25 @@ def gimme_meme():
     quote = json_data
     return quote
 
+def update_count():
+    os.environ('count') = count
 
 @bot.event
 async def on_ready():
     print('Bot is ready.')
     await bot.change_presence(activity=discord.Streaming(name="Tiredcheeseboi | r/help", url='https://twitch.tv/tiredcheeseboi'))
 
+@bot.event
+async def on_message(message):
+    if message.channel = '<#843246928161669141>':
+        if message.startswith(str(int(count)+1)):
+            count += 1
+            update_count()
+        else:
+            count = 0
+            await message.channel.send('Wrong number, restarting ;)')
+            update_count()
+    
 @bot.command(name="hello", brief="Say hello to the bot.", description="Make the bot say hello to you.")
 async def ping(ctx):
     await ctx.send('Hello!')
