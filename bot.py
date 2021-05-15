@@ -117,5 +117,6 @@ async def kick(ctx, member : discord.Member, *, reason = None):
         await ctx.send(f'Kicked {member.mention}')
         return
     await ctx.send('Insufficient permissions.')
+    print(ctx.message.author.roles)
 
 bot.run(bot_token)
