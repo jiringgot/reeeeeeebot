@@ -84,20 +84,15 @@ async def send_meme(ctx):
 
 @bot.command(name="ban", brief="Ban a member.", description="Ban a member. Can only be used by an adminstrator.")
 @commands.has_permissions(administrator = True)
+@commands.has_role('staff')
 async def ban(ctx, member : discord.Member, *, reason = None):
-    if 'staff' in ctx.message.author.roles:
-        await member.ban(reason = reason)
-        return
-    await ctx.send('Insufficient permissions.')
+    await member.ban(reason = reason)
     
 
 #The below code unbans player.
 @bot.command(name="unban", brief="Unban a member.", description="Unban a member. Can only be used by an administrator.")
 @commands.has_permissions(administrator = True)
 async def unban(ctx, *, member):
-    if 'staff' not in ctx.message.author.roles:
-        await ctx.send('Insufficient permissions.')
-        return
     banned_users = await ctx.guild.bans()
     member_name, member_discriminator = member.split("#")
 
@@ -111,12 +106,9 @@ async def unban(ctx, *, member):
 
 @bot.command(name="kick", brief="Kicks a member.", description="Kicks a member. Can only be used by an administrator.")
 @commands.has_permissions(administrator = True)
+@commands.has_role("staff")
 async def kick(ctx, member : discord.Member, *, reason = None):
-    if 'staff' in ctx.message.author.roles:
-        await member.kick(reason = reason)
-        await ctx.send(f'Kicked {member.mention}')
-        return
-    await ctx.send('Insufficient permissions.')
-    print(ctx.message.author.roles)
+    await member.kick(reason = reason)
+    await ctx.send(f'Kicked {member.mention}')
 
 bot.run(bot_token)
