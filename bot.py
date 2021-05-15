@@ -10,6 +10,7 @@ load_dotenv()
 #print(os.getenv("DISCORD_TOKEN"))
 
 bot_token = os.getenv("DISCORD_TOKEN")
+count = os.getenv("count")
 
 size = len(bot_token)
 bot_token = bot_token[:size - 2]
