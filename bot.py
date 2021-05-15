@@ -71,7 +71,7 @@ async def on_ready():
 @bot.event
 async def on_message(message):
     print(message.channel)
-    if message.channel == 'counting':
+    if message.channel == '<#counting>':
         print('pog')
         if message.startswith(str(int(count)+1)):
             count += 1
