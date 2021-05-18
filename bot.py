@@ -60,8 +60,8 @@ def gimme_meme():
     return quote
 
 def update_count():
-    os.environ['count'] = count
-    print(count)
+    os.environ['count'] = str(count)
+    print(str(count))
 
 @bot.event
 async def on_ready():
