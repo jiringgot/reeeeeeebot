@@ -138,5 +138,6 @@ async def on_message(message):
             print('Wrong number, starting over')
             await message.channel.send('Wrong number, starting over')
             update_count()
+            return
     await bot.process_commands(message)
 bot.run(bot_token)
