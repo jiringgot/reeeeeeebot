@@ -118,7 +118,7 @@ async def kick(ctx, member : discord.Member, *, reason = None):
 @bot.event
 async def on_message(message):
     global count
-    if(message.author == client.user):
+    if(message.author == bot.user):
         return
     if message.channel == bot.get_channel(843246928161669141):
         if message.content == str(count):
