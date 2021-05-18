@@ -132,6 +132,7 @@ async def on_message(message):
             print('Counted')
             update_count()
             last_message = message.author
+            return
         else:
             count = 0
             print('Wrong number, starting over')
