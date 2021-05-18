@@ -120,7 +120,7 @@ async def on_message(message):
     global count
     if message.channel == bot.get_channel(843246928161669141):
         if message.content == str(count):
-            count = int(count) += 1
+            count = int(count) + 1
             print('Counted')
             update_count()
         else:
