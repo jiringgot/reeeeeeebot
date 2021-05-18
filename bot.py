@@ -121,6 +121,7 @@ async def on_message(message):
     if(message.author == bot.user):
         return
     if message.channel == bot.get_channel(843246928161669141):
+        print(last_message)
         if message.author == last_message:
             count = 0
             print('Same author, starting over')
