@@ -114,4 +114,16 @@ async def kick(ctx, member : discord.Member, *, reason = None):
     await member.kick(reason = reason)
     await ctx.send(f'Kicked {member.mention}')
 
+
+@bot.event
+async def on_message(message):
+    if message.channel == bot.get_channel(843246928161669141):
+        if message.content == str(count):
+            count += 1
+            print('Counted')
+            update_count()
+        else:
+            count = 0
+            print('Wrong number, starting over')
+            update_count()
 bot.run(bot_token)
