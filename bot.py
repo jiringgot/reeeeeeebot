@@ -11,7 +11,7 @@ load_dotenv()
 
 bot_token = os.getenv("DISCORD_TOKEN")
 count = os.getenv("count")
-
+last_message = os.getenv('last_message')
 size = len(bot_token)
 bot_token = bot_token[:size - 2]
 
@@ -117,14 +117,20 @@ async def kick(ctx, member : discord.Member, *, reason = None):
 
 @bot.event
 async def on_message(message):
-    global count
+    global count, last_message
     if(message.author == bot.user):
         return
     if message.channel == bot.get_channel(843246928161669141):
+        if message.author == last_message:
+            count = 0
+            print('Same author, starting over')
+            await message.channel.send('Same author, starting over')
+            update_count()
         if message.content == str(count):
             count = int(count) + 1
             print('Counted')
             update_count()
+            last_message = message.author
         else:
             count = 0
             print('Wrong number, starting over')
