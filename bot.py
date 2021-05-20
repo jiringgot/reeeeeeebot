@@ -52,6 +52,10 @@ def get_quote():
     quote = json_data[0]['q'] + " - " + json_data[0]['a']
     return quote
 
+def get_status():
+    response = requests.get('http://reeeeeeebot.eu5.org/api.php')
+    json_data = json.loads(response.text)
+    print(json_data)
 
 def gimme_meme():
     response = requests.get("http://meme-api.herokuapp.com/gimme")
