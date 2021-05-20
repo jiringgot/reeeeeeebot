@@ -99,14 +99,15 @@ async def ban(ctx, member : discord.Member, *, reason = None):
 
 def check_status():
     global statuses
+    returnList = []
     api_statuses = get_status()
     for i in range(len(api_statuses)):
         print(api_statuses[i]['status'])
         if statuses[i] != api_statuses[i]['status']:
             statuses[i] = api_statuses[i]['status']
-            os.environ['status'][i] = statuses[i]
-            channel = bot.get_channel(802858193319493652)
-            channel.send(api_statuses[i]['name'] + " is now " + statuses[i])
+            os.environ['status'][i] = str(statuses[i])
+            returnList.append(api_statuses[i])
+    return returnList
     
 #The below code unbans player.
 @bot.command(name="unban", brief="Unban a member.", description="Unban a member. Can only be used by an administrator.")
@@ -133,8 +134,9 @@ async def kick(ctx, member : discord.Member, *, reason = None):
 
 @bot.command(name="status")
 async def status(ctx):
-    check_status()
-    await ctx.send(get_status())
+    temp_statuses = check_status()
+    for i in range(len(temp_statuses)):
+        await ctx.send(temp_statuses['name'] + ' is now ' + temp_statuses['status'])
     
 @bot.event
 async def on_message(message):
