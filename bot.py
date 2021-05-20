@@ -98,7 +98,7 @@ async def ban(ctx, member : discord.Member, *, reason = None):
     
 
 @tasks.loop(minute=1)
-def check_status():
+async def check_status():
     api_statuses = get_status()
     for i in range(len(api_statuses)):
         if statuses[i] != api_statuses[i]['status']:
