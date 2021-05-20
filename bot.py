@@ -134,6 +134,7 @@ async def kick(ctx, member : discord.Member, *, reason = None):
 
 @bot.command(name="status")
 async def status(ctx):
+    check_status()
     await ctx.send(get_status())
     
 @bot.event
