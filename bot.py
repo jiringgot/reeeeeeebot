@@ -97,7 +97,6 @@ async def ban(ctx, member : discord.Member, *, reason = None):
     await member.ban(reason = reason)
     
 
-@tasks.loop(minutes=1)
 async def check_status():
     global statuses
     api_statuses = get_status()
