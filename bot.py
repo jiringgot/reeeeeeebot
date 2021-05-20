@@ -102,6 +102,7 @@ async def check_status():
     global statuses
     api_statuses = get_status()
     for i in range(len(api_statuses)):
+        print(api_statuses[i]['status'])
         if statuses[i] != api_statuses[i]['status']:
             statuses[i] = api_statuses[i]['status']
             os.environ['status'][i] = statuses[i]
