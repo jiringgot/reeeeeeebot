@@ -97,7 +97,7 @@ async def ban(ctx, member : discord.Member, *, reason = None):
     await member.ban(reason = reason)
     
 
-async def check_status():
+def check_status():
     global statuses
     api_statuses = get_status()
     for i in range(len(api_statuses)):
@@ -106,7 +106,7 @@ async def check_status():
             statuses[i] = api_statuses[i]['status']
             os.environ['status'][i] = statuses[i]
             channel = bot.get_channel(802858193319493652)
-            await channel.send(api_statuses[i]['name'] + " is now " + statuses[i])
+            channel.send(api_statuses[i]['name'] + " is now " + statuses[i])
     
 #The below code unbans player.
 @bot.command(name="unban", brief="Unban a member.", description="Unban a member. Can only be used by an administrator.")
