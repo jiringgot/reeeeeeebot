@@ -55,7 +55,7 @@ def get_quote():
 def get_status():
     response = requests.get('http://reeeeeeebot.eu5.org/api.php')
     json_data = json.loads(response.text)
-    print(json_data)
+    return json_data
 
 def gimme_meme():
     response = requests.get("http://meme-api.herokuapp.com/gimme")
@@ -119,6 +119,10 @@ async def kick(ctx, member : discord.Member, *, reason = None):
     await ctx.send(f'Kicked {member.mention}')
 
 
+@bot.command(name="status")
+async def status(ctx):
+    await ctx.send(get_status())
+    
 @bot.event
 async def on_message(message):
     global count, last_message
