@@ -12,6 +12,7 @@ load_dotenv()
 bot_token = os.getenv("DISCORD_TOKEN")
 count = os.getenv("count")
 last_message = os.getenv('last_message')
+statuses = json.loads(os.environ['status'])
 size = len(bot_token)
 bot_token = bot_token[:size - 2]
 
@@ -96,6 +97,9 @@ async def ban(ctx, member : discord.Member, *, reason = None):
     await member.ban(reason = reason)
     
 
+@tasks.loop(minute=1)
+def check_status():
+    
 #The below code unbans player.
 @bot.command(name="unban", brief="Unban a member.", description="Unban a member. Can only be used by an administrator.")
 @commands.has_permissions(administrator = True)
