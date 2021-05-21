@@ -137,7 +137,7 @@ async def kick(ctx, member : discord.Member, *, reason = None):
 async def status(ctx):
     temp_statuses = check_status()
     for i in range(len(temp_statuses)):
-        await ctx.send(temp_statuses['name'] + ' is now ' + temp_statuses['status'])
+        await ctx.send(temp_statuses[i] + ' is now ' + temp_statuses[i])
     
 @bot.event
 async def on_message(message):
