@@ -111,7 +111,8 @@ def check_status():
                 og_statuses += statuses[i]
             os.environ['status'] = og_statuses
             returnList.append(api_statuses[i])
-            return returnList
+    print(returnList)
+    return returnList
     
 #The below code unbans player.
 @bot.command(name="unban", brief="Unban a member.", description="Unban a member. Can only be used by an administrator.")
