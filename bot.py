@@ -73,6 +73,7 @@ def update_count():
 async def on_ready():
     print('Bot is ready.')
     await bot.change_presence(activity=discord.Streaming(name="Tiredcheeseboi | r/help", url='https://twitch.tv/tiredcheeseboi'))
+    status.start()
     
 @bot.command(name="hello", brief="Say hello to the bot.", description="Make the bot say hello to you.")
 async def ping(ctx):
@@ -140,12 +141,13 @@ async def kick(ctx, member : discord.Member, *, reason = None):
     await ctx.send(f'Kicked {member.mention}')
 
 
-@bot.command(name="status")
-async def status(ctx):
+@tasks.loop(minutes=1)
+async def status():
     temp_statuses = check_status()
     for i in range(len(temp_statuses)):
         print(temp_statuses)
-        await ctx.send(temp_statuses[i]['name'] + ' is now ' + temp_statuses[i]['status'])
+        channel = bot.get_channel(802858193319493652)
+        await channel.send(temp_statuses[i]['name'] + ' is now ' + temp_statuses[i]['status'])
     
 @bot.event
 async def on_message(message):
