@@ -108,11 +108,12 @@ def check_status():
             statuses[i] = api_statuses[i]['status']
             print(statuses[i])
             print(api_statuses[i])
+            returnList.append(api_statuses[i])
             for i in range(len(statuses)):
                 og_statuses += statuses[i]
             os.environ['status'] = og_statuses
             print(i)
-            returnList.append(api_statuses[i])
+            
     print(returnList)
     return returnList
     
