@@ -99,7 +99,7 @@ async def ban(ctx, member : discord.Member, *, reason = None):
     
 
 def check_status():
-    global statuses
+    global statuses, og_statuses
     returnList = []
     api_statuses = get_status()
     for i in range(len(api_statuses)):
