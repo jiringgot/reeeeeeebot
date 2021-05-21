@@ -105,7 +105,8 @@ def check_status():
         print(api_statuses[i]['status'])
         if statuses[i] != api_statuses[i]['status']:
             statuses[i] = api_statuses[i]['status']
-            os.environ['status'][i] = json.loads(statuses[i])
+            print(statuses[i])
+            os.environ['status'][i] = str(statuses[i])
             returnList.append(api_statuses[i])
     return returnList
     
