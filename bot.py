@@ -12,7 +12,8 @@ load_dotenv()
 bot_token = os.getenv("DISCORD_TOKEN")
 count = os.getenv("count")
 last_message = os.getenv('last_message')
-statuses = json.loads(os.environ['status'])
+og_statuses = os.environ.get("status")
+statuses = og_statuses.split(" ")
 size = len(bot_token)
 bot_token = bot_token[:size - 2]
 
