@@ -106,6 +106,7 @@ def check_status():
         print(api_statuses[i]['status'])
         if statuses[i] != api_statuses[i]['status']:
             statuses[i] = api_statuses[i]['status']
+            print(statuses[i])
             print(api_statuses[i])
             for i in range(len(statuses)):
                 og_statuses += statuses[i]
