@@ -140,6 +140,7 @@ async def kick(ctx, member : discord.Member, *, reason = None):
 async def status(ctx):
     temp_statuses = check_status()
     for i in range(len(temp_statuses)):
+        print(temp_statuses)
         await ctx.send(temp_statuses[i]['name'] + ' is now ' + temp_statuses[i]['status'])
     
 @bot.event
