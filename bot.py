@@ -54,10 +54,10 @@ def get_quote():
     quote = json_data[0]['q'] + " - " + json_data[0]['a']
     return quote
 
-def get_status():
+'''def get_status():
     response = requests.get('http://reeeeeeebot.eu5.org/api.php')
     json_data = json.loads(response.text)
-    return json_data
+    return json_data'''
 
 def gimme_meme():
     response = requests.get("http://meme-api.herokuapp.com/gimme")
@@ -73,7 +73,7 @@ def update_count():
 async def on_ready():
     print('Bot is ready.')
     await bot.change_presence(activity=discord.Streaming(name="Tiredcheeseboi | r/help", url='https://twitch.tv/tiredcheeseboi'))
-    status.start()
+    #status.start()
     
 @bot.command(name="hello", brief="Say hello to the bot.", description="Make the bot say hello to you.")
 async def ping(ctx):
@@ -99,7 +99,7 @@ async def ban(ctx, member : discord.Member, *, reason = None):
     await member.ban(reason = reason)
     
 
-def check_status():
+'''def check_status():
     global statuses, og_statuses
     returnList = []
     api_statuses = get_status()
@@ -116,7 +116,7 @@ def check_status():
             print(i)
             
     print(returnList)
-    return returnList
+    return returnList'''
     
 #The below code unbans player.
 @bot.command(name="unban", brief="Unban a member.", description="Unban a member. Can only be used by an administrator.")
