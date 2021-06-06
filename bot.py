@@ -10,7 +10,8 @@ load_dotenv()
 #print(os.getenv("DISCORD_TOKEN"))
 
 bot_token = os.getenv("DISCORD_TOKEN")
-count = os.getenv("count")
+env_count = os.getenv("count")
+count = env_count
 last_message = os.getenv('last_message')
 og_statuses = os.environ.get("status")
 statuses = og_statuses.split(" ")
@@ -67,7 +68,7 @@ def gimme_meme():
 
 def update_count():
     os.environ['count'] = str(count)
-    print(str(count))
+    env_count = os.getenv("count")
 
 @bot.event
 async def on_ready():
@@ -156,6 +157,7 @@ async def on_message(message):
         return
     if message.channel == bot.get_channel(843246928161669141):
         print('Written number: '+message.content)
+        print('Expected number: '+count)
         if message.author == last_message:
             count = 0
             print('Same author, starting over')
