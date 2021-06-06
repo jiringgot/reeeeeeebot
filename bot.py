@@ -157,7 +157,7 @@ async def on_message(message):
         return
     if message.channel == bot.get_channel(843246928161669141):
         print('Written number: '+message.content)
-        print('Expected number: '+count)
+        print('Expected number: '+str(count))
         if message.author == last_message:
             count = 0
             print('Same author, starting over')
