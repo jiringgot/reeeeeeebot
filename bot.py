@@ -163,6 +163,7 @@ async def on_message(message):
             print('Same author, starting over')
             await message.channel.send('Same author, starting over')
             update_count()
+            return
         if message.content == str(count):
             count = int(count) + 1
             print('Counted')
